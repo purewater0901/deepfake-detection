@@ -1,0 +1,100 @@
+# Unlocking the Hidden Potential of CLIP in Generalizable Deepfake Detection
+
+This is the official repository for the paper **Unlocking the Hidden Potential of CLIP in Generalizable Deepfake Detection**.
+
+## Set up environment
+
+``` bash
+conda create --name dfdet python=3.12 uv
+conda activate dfdet
+uv pip install -r requirements.txt
+```
+
+## Minimal inference example
+
+Read `inference.py`, it automatically downloads the model from [huggingface](https://huggingface.co/yermandy/deepfake-detection/tree/main) to and runs inference on sample images.
+
+``` bash
+python inference.py
+```
+
+**❗ Important note**: sample images are already preprocessed. To get the same results as in the paper, you need to preprocess images using DeepfakeBench [preprocessing](https://github.com/SCLBD/DeepfakeBench/blob/fb6171a8e1db2ae0f017d9f3a12be31fd9e0a3fb/preprocessing/preprocess.py) pipeline.
+
+## Training
+
+### Minimal example without external data
+
+#### Run Training
+
+You can adjust training configuration in `get_train_config` function in `run.py` or override them with command line arguments. Command line arguments have higher priority.
+
+Example changing configurations in `get_train_config`:
+
+1. Set `config.wandb = True` for logging to wandb
+
+2. Set `config.devices = [2]` for using GPU number 2
+
+``` bash
+python run.py --train
+```
+
+#### Run testing (for example, on other dataset)
+
+``` bash
+python run.py --test
+```
+
+---
+
+### Full training
+
+#### Prepare the dataset
+
+To fully train the model, you need to download datasets, preprocess them and create a file with paths to the images.
+
+For example, if you want to work with the [FaceForensics++](https://github.com/ondyari/FaceForensics) dataset, follow these steps:
+
+1. Download the dataset first from the [official source](https://github.com/ondyari/FaceForensics)
+
+2. Preprocess the dataset using [DeepfakeBench](https://github.com/SCLBD/DeepfakeBench)
+
+3. Place images to the recommended directory structure: `datasets / <dataset_name> / <source_name> / <video_name> / <frame_name>`, see `src/dataset/deepfake.py` for more details
+
+``` bash
+datasets
+└── FF
+    ├── DF
+    │   └── 000_003
+    │       ├── 025.png
+    │       └── 038.png
+    ├── F2F
+    │   └── 000_003
+    │       ├── 019.png
+    │       └── 029.png
+    ├── FS
+    │   └── 000_003
+    │       ├── 019.png
+    │       └── 029.png
+    ├── NT
+    │   └── 000_003
+    │       ├── 019.png
+    │       └── 029.png
+    └── real
+        └── 000
+            ├── 025.png
+            └── 038.png
+```
+
+4. Create files with paths to images similar to the ones in `config/datasets` directory. Get inspired by this script:
+
+``` bash
+sh scripts/prepare_FF.sh
+```
+
+#### Run training
+
+Adjust training configuration as needed before executing the command below:
+
+``` bash
+python run.py --train
+```
