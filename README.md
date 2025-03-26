@@ -1,14 +1,14 @@
 # Unlocking the Hidden Potential of CLIP in Generalizable Deepfake Detection
 
-[![arXiv Badge](https://img.shields.io/badge/arXiv-B31B1B?logo=arxiv&logoColor=FFF&style=for-the-badge)](https://arxiv.org/abs/2503.19683v1)
+[![arXiv Badge](https://img.shields.io/badge/arXiv-B31B1B?logo=arxiv&logoColor=FFF&style=for-the-badge)](https://arxiv.org/abs/2503.19683)
 
 This is the official repository for the paper:
 
-**[Unlocking the Hidden Potential of CLIP in Generalizable Deepfake Detection](https://arxiv.org/abs/2503.19683v1)**.
+**[Unlocking the Hidden Potential of CLIP in Generalizable Deepfake Detection](https://arxiv.org/abs/2503.19683)**.
 
 ### Abstract
 
-> This paper tackles the challenge of detecting partially manipulated facial deepfakes, which involve subtle alterations to specific facial features while retaining the overall context, posing a greater detection difficulty than fully synthetic faces. We leverage the Contrastive Language-Image Pre-training (CLIP) model, specifically its ViT-L/14 visual encoder, to develop a generalizable detection method that performs robustly across diverse datasets and unknown forgery techniques with minimal modifications to the original model. The proposed approach utilizes parameter-efficient fine-tuning (PEFT) techniques, such as LN-tuning, to adjust a small subset of the model's parameters, preserving CLIP's pre-trained knowledge and reducing overfitting. A tailored preprocessing pipeline optimizes the method for facial images, while regularization strategies, including L2 normalization and metric learning on a hyperspherical manifold, enhance generalization. Trained on the FaceForensics++ dataset and evaluated in a cross-dataset fashion on Celeb-DF-v2, DFDC, FFIW, and others, the proposed method achieves competitive detection accuracy comparable or outperforming much more complex state-of-the-art techniques. This work highlights the efficacy of CLIP's visual encoder in facial deepfake detection and establishes a simple, powerful baseline for future research, advancing the field of generalizable deepfake detection.
+> This paper tackles the challenge of detecting partially manipulated facial deepfakes, which involve subtle alterations to specific facial features while retaining the overall context, posing a greater detection difficulty than fully synthetic faces. We leverage the Contrastive Language-Image Pre-training (CLIP) model, specifically its ViT-L/14 visual encoder, to develop a generalizable detection method that performs robustly across diverse datasets and unknown forgery techniques with minimal modifications to the original model. The proposed approach utilizes parameter-efficient fine-tuning (PEFT) techniques, such as LN-tuning, to adjust a small subset of the model's parameters, preserving CLIP's pre-trained knowledge and reducing overfitting. A tailored preprocessing pipeline optimizes the method for facial images, while regularization strategies, including L2 normalization and metric learning on a hyperspherical manifold, enhance generalization. Trained on the FaceForensics++ dataset and evaluated in a cross-dataset fashion on Celeb-DF-v2, DFDC, FFIW, and others, the proposed method achieves competitive detection accuracy comparable to or outperforming much more complex state-of-the-art techniques. This work highlights the efficacy of CLIP's visual encoder in facial deepfake detection and establishes a simple, powerful baseline for future research, advancing the field of generalizable deepfake detection.
 
 
 ## Set up environment
@@ -21,7 +21,7 @@ uv pip install -r requirements.txt
 
 ## Minimal inference example
 
-Read `inference.py`, it automatically downloads the model from [huggingface](https://huggingface.co/yermandy/deepfake-detection/tree/main) to and runs inference on sample images.
+Read `inference.py`, it automatically downloads the model from [huggingface](https://huggingface.co/yermandy/deepfake-detection/tree/main) and runs inference on sample images.
 
 ``` bash
 python inference.py
@@ -59,7 +59,7 @@ python run.py --test
 
 #### Prepare the dataset
 
-To fully train the model, you need to download datasets, preprocess them and create a file with paths to the images.
+To fully train the model, you need to download datasets, preprocess them, and create a file with paths to the images.
 
 For example, if you want to work with the [FaceForensics++](https://github.com/ondyari/FaceForensics) dataset, follow these steps:
 
@@ -67,7 +67,7 @@ For example, if you want to work with the [FaceForensics++](https://github.com/o
 
 2. Preprocess the dataset using [DeepfakeBench](https://github.com/SCLBD/DeepfakeBench)
 
-3. Place images to the recommended directory structure: `datasets / <dataset_name> / <source_name> / <video_name> / <frame_name>`, see `src/dataset/deepfake.py` for more details
+3. Place images in the recommended directory structure: `datasets / <dataset_name> / <source_name> / <video_name> / <frame_name>`, see `src/dataset/deepfake.py` for more details
 
 ``` bash
 datasets
