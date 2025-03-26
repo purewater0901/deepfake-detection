@@ -1,6 +1,15 @@
 # Unlocking the Hidden Potential of CLIP in Generalizable Deepfake Detection
 
-This is the official repository for the paper **Unlocking the Hidden Potential of CLIP in Generalizable Deepfake Detection**.
+[![arXiv Badge](https://img.shields.io/badge/arXiv-B31B1B?logo=arxiv&logoColor=FFF&style=for-the-badge)](https://arxiv.org/abs/2503.19683v1)
+
+This is the official repository for the paper:
+
+**[Unlocking the Hidden Potential of CLIP in Generalizable Deepfake Detection](https://arxiv.org/abs/2503.19683v1)**.
+
+### Abstract
+
+> This paper tackles the challenge of detecting partially manipulated facial deepfakes, which involve subtle alterations to specific facial features while retaining the overall context, posing a greater detection difficulty than fully synthetic faces. We leverage the Contrastive Language-Image Pre-training (CLIP) model, specifically its ViT-L/14 visual encoder, to develop a generalizable detection method that performs robustly across diverse datasets and unknown forgery techniques with minimal modifications to the original model. The proposed approach utilizes parameter-efficient fine-tuning (PEFT) techniques, such as LN-tuning, to adjust a small subset of the model's parameters, preserving CLIP's pre-trained knowledge and reducing overfitting. A tailored preprocessing pipeline optimizes the method for facial images, while regularization strategies, including L2 normalization and metric learning on a hyperspherical manifold, enhance generalization. Trained on the FaceForensics++ dataset and evaluated in a cross-dataset fashion on Celeb-DF-v2, DFDC, FFIW, and others, the proposed method achieves competitive detection accuracy comparable or outperforming much more complex state-of-the-art techniques. This work highlights the efficacy of CLIP's visual encoder in facial deepfake detection and establishes a simple, powerful baseline for future research, advancing the field of generalizable deepfake detection.
+
 
 ## Set up environment
 
@@ -97,4 +106,18 @@ Adjust training configuration as needed before executing the command below:
 
 ``` bash
 python run.py --train
+```
+
+### Cite
+
+``` bibtex
+@article{yermakov-2025-deepfake-detection,
+    title={Unlocking the Hidden Potential of CLIP in Generalizable Deepfake Detection}, 
+    author={Andrii Yermakov and Jan Cech and Jiri Matas},
+    year={2025},
+    eprint={2503.19683},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV},
+    url={https://arxiv.org/abs/2503.19683}, 
+}
 ```
