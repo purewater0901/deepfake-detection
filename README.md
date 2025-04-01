@@ -22,13 +22,25 @@ uv pip install -r requirements.txt
 
 ## Minimal inference example
 
+**❗ Important note**: sample images are already preprocessed. To get the same results as in the paper, you need to preprocess images using DeepfakeBench [preprocessing](https://github.com/SCLBD/DeepfakeBench/blob/fb6171a8e1db2ae0f017d9f3a12be31fd9e0a3fb/preprocessing/preprocess.py) pipeline.
+
+### Minimal dependencies (torch + transformers)
+
+This example requires only `torch` and `transformers` to run. This is an easy-to-integrate solution. The model has been traced and saved to a [`model.torchscript`](https://huggingface.co/yermandy/deepfake-detection/tree/main) file. Run:
+
+``` bash
+python inference_torchscript.py
+```
+
+Results might be a little bit different than in **precise inference** ↓
+
+### Precise inference (full dependencies)
+
 Read `inference.py`, it automatically downloads the model from [huggingface](https://huggingface.co/yermandy/deepfake-detection/tree/main) and runs inference on sample images.
 
 ``` bash
 python inference.py
 ```
-
-**❗ Important note**: sample images are already preprocessed. To get the same results as in the paper, you need to preprocess images using DeepfakeBench [preprocessing](https://github.com/SCLBD/DeepfakeBench/blob/fb6171a8e1db2ae0f017d9f3a12be31fd9e0a3fb/preprocessing/preprocess.py) pipeline.
 
 ## Training
 
