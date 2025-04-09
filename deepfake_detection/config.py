@@ -144,6 +144,9 @@ class Config(Validation, validate_assignment=True):
     # Post-processing
     make_binary_before_video_aggregation: bool = True  # Make binary labels before video aggregation
 
+    def get(self, key, default=None):
+        return getattr(self, key, default)
+
 
 def load_config(path: str) -> Config:
     import yaml
