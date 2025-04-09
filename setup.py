@@ -11,7 +11,8 @@ setup(
     author='Yutaka',
     author_email='purewater0901@gmail.com',
     url='git@github.com:purewater0901/deepfake-detection.git',
-    packages=find_packages(),
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
     python_requires='>=3.10',
     install_requires=load_requirements("requirements.txt"),
 )
