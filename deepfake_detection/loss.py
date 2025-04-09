@@ -4,8 +4,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from deepfake_detection.losses.unifalign import alignment, uniformity
-from deepfake_detection.utils import logger
+from .losses.unifalign import alignment, uniformity
+from .utils import logger
 
 from .config import Loss as LossConfig
 
